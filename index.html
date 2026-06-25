@@ -7,327 +7,100 @@
   <meta name="description" content="La plataforma de fútbol 5 rankeado de Uruguay. Encontrá partidos, medí tu nivel y subí de rango." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0b1512; color: #f9f9f9; min-height: 100vh; overflow-x: hidden; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0b1512;
-      color: #f9f9f9;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 48px;
-      border-bottom: 1px solid rgba(222, 254, 164, 0.08);
-    }
-
-    nav .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
+    /* NAV */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; border-bottom: 1px solid rgba(222,254,164,0.08); }
+    nav .logo-wrap { display: flex; align-items: center; gap: 12px; }
     nav .logo-wrap svg { width: 40px; height: 40px; }
-
-    nav .brand {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: #defea4;
-    }
-
-    nav a {
-      color: #9caa88;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-
+    nav .brand { font-size: 22px; font-weight: 800; letter-spacing: 0.08em; color: #defea4; }
+    nav a { color: #9caa88; text-decoration: none; font-size: 14px; transition: color 0.2s; }
     nav a:hover { color: #defea4; }
 
-    /* ── HERO ── */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 96px 24px 80px;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(222,254,164,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(222, 254, 164, 0.08);
-      border: 1px solid rgba(222, 254, 164, 0.2);
-      border-radius: 999px;
-      padding: 6px 16px;
-      font-size: 13px;
-      color: #defea4;
-      margin-bottom: 32px;
-      letter-spacing: 0.04em;
-    }
-
-    .hero h1 {
-      font-size: clamp(38px, 7vw, 72px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      max-width: 720px;
-    }
-
+    /* HERO */
+    .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 80px 24px 64px; position: relative; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse at center, rgba(222,254,164,0.07) 0%, transparent 70%); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(222,254,164,0.08); border: 1px solid rgba(222,254,164,0.2); border-radius: 999px; padding: 6px 16px; font-size: 13px; color: #defea4; margin-bottom: 28px; letter-spacing: 0.04em; }
+    .hero h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; max-width: 720px; }
     .hero h1 span { color: #defea4; }
-
-    .hero p {
-      font-size: 18px;
-      color: #9caa88;
-      max-width: 480px;
-      line-height: 1.6;
-      margin-bottom: 48px;
-    }
-
-    .cta-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      background: #defea4;
-      color: #0b1512;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.15s, opacity 0.15s;
-    }
-
+    .hero p { font-size: 17px; color: #9caa88; max-width: 460px; line-height: 1.6; margin-bottom: 40px; }
+    .cta-group { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { background: #defea4; color: #0b1512; border: none; border-radius: 12px; padding: 14px 30px; font-size: 16px; font-weight: 700; cursor: pointer; text-decoration: none; transition: transform 0.15s, opacity 0.15s; }
     .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    .btn-secondary {
-      background: transparent;
-      color: #9caa88;
-      border: 1px solid rgba(156, 170, 136, 0.3);
-      border-radius: 12px;
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
+    .btn-secondary { background: transparent; color: #9caa88; border: 1px solid rgba(156,170,136,0.3); border-radius: 12px; padding: 14px 30px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .btn-secondary:hover { border-color: #defea4; color: #defea4; }
 
-    /* ── MOCKUP ── */
-    .mockup-wrap {
-      display: flex;
-      justify-content: center;
-      padding: 0 24px 96px;
-    }
+    /* SHOWCASE */
+    .showcase { padding: 0 24px 96px; max-width: 1100px; margin: 0 auto; }
+    .showcase-inner { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
+    @media (max-width: 820px) { .showcase-inner { grid-template-columns: 1fr; justify-items: center; } }
 
-    .mockup {
-      width: 280px;
-      background: #111e14;
-      border-radius: 32px;
-      border: 1px solid rgba(222,254,164,0.12);
-      padding: 32px 24px;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(222,254,164,0.05);
-    }
+    .card-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .card-wrap svg { filter: drop-shadow(0 24px 48px rgba(0,0,0,0.7)) drop-shadow(0 0 20px rgba(201,146,10,0.2)); }
+    .tier-badge { background: rgba(201,146,10,0.12); border: 1px solid rgba(201,146,10,0.3); border-radius: 999px; padding: 8px 20px; font-size: 14px; font-weight: 700; color: #c9920a; letter-spacing: 0.03em; }
 
-    .mockup-card {
-      background: linear-gradient(145deg, #1a2e1a, #0f1f0f);
-      border-radius: 20px;
-      padding: 24px;
-      border: 1px solid rgba(222,254,164,0.1);
-      margin-bottom: 16px;
-    }
+    /* RIGHT PANEL */
+    .showcase-panel { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 
-    .mockup-rank {
-      font-size: 11px;
-      color: #defea4;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
+    /* LEADERBOARD CARD */
+    .lb-card { background: #111e14; border: 1px solid rgba(222,254,164,0.08); border-radius: 20px; overflow: hidden; }
+    .lb-header { padding: 18px 20px 14px; border-bottom: 1px solid rgba(222,254,164,0.06); }
+    .lb-header h3 { font-size: 15px; font-weight: 700; color: #defea4; display: flex; align-items: center; gap: 8px; }
+    .lb-podium { display: flex; justify-content: center; align-items: flex-end; gap: 12px; padding: 24px 20px 16px; }
+    .podium-slot { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .podium-slot.first { order: 2; }
+    .podium-slot.second { order: 1; }
+    .podium-slot.third { order: 3; }
+    .podium-medal { font-size: 11px; font-weight: 700; color: #6a7a60; letter-spacing: 0.05em; }
+    .podium-slot.first .podium-medal { color: #defea4; font-size: 13px; }
+    .podium-avatar { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; }
+    .podium-slot.first .podium-avatar { width: 64px; height: 64px; font-size: 22px; }
+    .podium-name { font-size: 11px; font-weight: 600; color: #9caa88; text-align: center; max-width: 70px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .podium-tier { font-size: 10px; color: #6a7a60; }
+    .lb-list { padding: 0 12px 12px; display: flex; flex-direction: column; gap: 4px; }
+    .lb-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; transition: background 0.15s; }
+    .lb-row:hover { background: rgba(222,254,164,0.04); }
+    .lb-pos { font-size: 12px; font-weight: 800; color: #3d4d36; width: 18px; text-align: center; flex-shrink: 0; }
+    .lb-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+    .lb-info { flex: 1; min-width: 0; }
+    .lb-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lb-tier { font-size: 10px; color: #6a7a60; }
+    .lb-mmr { font-size: 12px; font-weight: 700; color: #6a7a60; flex-shrink: 0; }
 
-    .mockup-name {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
+    /* MATCH CARD */
+    .match-card { background: #111e14; border: 1px solid rgba(222,254,164,0.08); border-radius: 20px; overflow: hidden; }
+    .match-header { padding: 18px 20px 14px; border-bottom: 1px solid rgba(222,254,164,0.06); }
+    .match-header h3 { font-size: 15px; font-weight: 700; color: #defea4; }
+    .match-list { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .match-row { background: rgba(0,0,0,0.2); border: 1px solid rgba(222,254,164,0.06); border-radius: 12px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .match-info { flex: 1; min-width: 0; }
+    .match-range { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+    .match-meta { font-size: 11px; color: #6a7a60; }
+    .match-spots { font-size: 10px; color: #defea4; font-weight: 600; margin-top: 2px; }
+    .match-btn { background: #defea4; color: #0b1512; border-radius: 8px; padding: 7px 14px; font-size: 12px; font-weight: 700; white-space: nowrap; flex-shrink: 0; cursor: pointer; text-decoration: none; }
+    .match-btn.full { background: rgba(222,254,164,0.1); color: #6a7a60; cursor: default; }
 
-    .mockup-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-    }
-
-    .mockup-stat {
-      background: rgba(0,0,0,0.3);
-      border-radius: 10px;
-      padding: 10px 8px;
-      text-align: center;
-    }
-
-    .mockup-stat-val {
-      font-size: 18px;
-      font-weight: 800;
-      color: #defea4;
-    }
-
-    .mockup-stat-label {
-      font-size: 9px;
-      color: #6a7a60;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 2px;
-    }
-
-    .mockup-match {
-      background: rgba(222,254,164,0.05);
-      border: 1px solid rgba(222,254,164,0.1);
-      border-radius: 14px;
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .mockup-match-info { font-size: 13px; }
-    .mockup-match-title { font-weight: 700; margin-bottom: 4px; }
-    .mockup-match-sub { color: #6a7a60; font-size: 11px; }
-
-    .mockup-match-btn {
-      background: #defea4;
-      color: #0b1512;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* ── FEATURES ── */
-    .features {
-      padding: 0 24px 96px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .features h2 {
-      text-align: center;
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 48px;
-      letter-spacing: -0.01em;
-    }
-
+    /* FEATURES */
+    .features { padding: 0 24px 80px; max-width: 1000px; margin: 0 auto; }
+    .features h2 { text-align: center; font-size: clamp(28px,4vw,36px); font-weight: 800; margin-bottom: 48px; letter-spacing: -0.01em; }
     .features h2 span { color: #defea4; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .feature-card { background: #111e14; border: 1px solid rgba(222,254,164,0.08); border-radius: 20px; padding: 26px; transition: border-color 0.2s; }
+    .feature-card:hover { border-color: rgba(222,254,164,0.18); }
+    .feature-icon { font-size: 28px; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 7px; }
+    .feature-card p { font-size: 13px; color: #6a7a60; line-height: 1.6; }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card {
-      background: #111e14;
-      border: 1px solid rgba(222,254,164,0.08);
-      border-radius: 20px;
-      padding: 28px;
-      transition: border-color 0.2s;
-    }
-
-    .feature-card:hover { border-color: rgba(222,254,164,0.2); }
-
-    .feature-icon {
-      font-size: 32px;
-      margin-bottom: 16px;
-    }
-
-    .feature-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .feature-card p {
-      font-size: 14px;
-      color: #6a7a60;
-      line-height: 1.6;
-    }
-
-    /* ── RANKS ── */
-    .ranks {
-      padding: 0 24px 96px;
-      text-align: center;
-    }
-
-    .ranks h2 {
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
+    /* RANKS */
+    .ranks { padding: 0 24px 80px; text-align: center; }
+    .ranks h2 { font-size: clamp(28px,4vw,36px); font-weight: 800; margin-bottom: 12px; }
     .ranks h2 span { color: #defea4; }
+    .ranks p { color: #6a7a60; margin-bottom: 40px; font-size: 15px; }
+    .ranks-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; max-width: 680px; margin: 0 auto; }
+    .rank-pill { border-radius: 999px; padding: 7px 16px; font-size: 13px; font-weight: 700; border: 1px solid transparent; }
 
-    .ranks p {
-      color: #6a7a60;
-      margin-bottom: 48px;
-      font-size: 16px;
-    }
-
-    .ranks-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .rank-pill {
-      border-radius: 999px;
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 700;
-      border: 1px solid transparent;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid rgba(222,254,164,0.08);
-      padding: 40px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
+    /* FOOTER */
+    footer { border-top: 1px solid rgba(222,254,164,0.08); padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     footer .brand { font-size: 18px; font-weight: 800; color: #defea4; letter-spacing: 0.08em; }
     footer p { font-size: 13px; color: #3d4d36; }
     footer a { color: #6a7a60; text-decoration: none; font-size: 13px; }
@@ -335,14 +108,13 @@
 
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
-      .hero { padding: 64px 20px 48px; }
-      footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+      .hero { padding: 56px 20px 40px; }
+      footer { padding: 28px 20px; flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo-wrap">
     <svg viewBox="0 0 527.29 567.61" xmlns="http://www.w3.org/2000/svg">
@@ -357,66 +129,276 @@
   <a href="mailto:support@futs.app">Contacto</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-badge">⚽ Disponible en Uruguay</div>
   <h1>Fútbol 5 rankeado.<br /><span>Jugá. Subí. Dominá.</span></h1>
-  <p>Encontrá partidos cerca tuyo, medí tu nivel real y escala los 21 rangos desde Hierro hasta Diamante.</p>
+  <p>Encontrá partidos cerca tuyo, medí tu nivel real y escala los 13 rangos desde Hierro hasta Diamante.</p>
   <div class="cta-group">
     <a class="btn-primary" href="#">Descargar la app</a>
     <a class="btn-secondary" href="mailto:support@futs.app">Contactarnos</a>
   </div>
 </section>
 
-<!-- MOCKUP -->
-<div class="mockup-wrap">
-  <div class="mockup">
-    <div class="mockup-card">
-      <div class="mockup-rank">Oro II</div>
-      <div class="mockup-name">Mateo S.</div>
-      <div class="mockup-stats">
-        <div class="mockup-stat">
-          <div class="mockup-stat-val">1340</div>
-          <div class="mockup-stat-label">MMR</div>
-        </div>
-        <div class="mockup-stat">
-          <div class="mockup-stat-val">73%</div>
-          <div class="mockup-stat-label">Victorias</div>
-        </div>
-        <div class="mockup-stat">
-          <div class="mockup-stat-val">48</div>
-          <div class="mockup-stat-label">Partidos</div>
-        </div>
-      </div>
+<section class="showcase">
+  <div class="showcase-inner">
+
+    <!-- PLAYER CARD -->
+    <div class="card-wrap">
+      <svg viewBox="0 0 267.3 427.3" width="230" height="368" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="card-clip">
+            <path d="M265.3 53.9a33.3 33.3 0 0 1-17.8-5.5 32 32 0 0 1-13.7-22.9c-0.2-1.1-0.4-2.3-0.4-3.4 0-1.3-1-1.5-1.8-1.9a163 163 0 0 0-31-11.6A257.3 257.3 0 0 0 133.7 0a254.9 254.9 0 0 0-67.1 8.7 170 170 0 0 0-31 11.6c-0.8 0.4-1.8 0.6-1.8 1.9 0 1.1-0.2 2.3-0.4 3.4a32.4 32.4 0 0 1-13.7 22.9A33.8 33.8 0 0 1 2 53.9c-1.5 0.1-2.1 0.4-2 2v293.9c0 3.3 0 6.6 0.4 9.9a22 22 0 0 0 7.9 14.4c3.8 3.2 8.3 5.3 13 6.8 12.4 3.9 24.8 7.5 37.2 11.5a388.7 388.7 0 0 1 50 19.4 88.7 88.7 0 0 1 25 15.5c7.2-7 16.1-11.3 25-15.5a427 427 0 0 1 50-19.4l37.2-11.5c4.7-1.5 9.1-3.5 13-6.8 4.5-3.8 7.2-8.5 7.9-14.4 0.4-3.3 0.4-3.3 0.4-9.9V231.6V60.5v-4.6c0.4-1.6-0.3-1.9-1.7-2z"/>
+          </clipPath>
+          <linearGradient id="top-dark" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1e1e1e"/><stop offset="1" stop-color="#141414"/>
+          </linearGradient>
+          <linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#c9920a"/><stop offset="1" stop-color="#8a6106"/>
+          </linearGradient>
+          <linearGradient id="bot-dark" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#141414"/><stop offset="1" stop-color="#1e1e1e"/>
+          </linearGradient>
+        </defs>
+
+        <g clip-path="url(#card-clip)">
+          <!-- Base -->
+          <rect width="267.3" height="427.3" fill="#111111"/>
+
+          <!-- TOP SECTION (0–230.742) -->
+          <rect width="267.3" height="230.742" fill="url(#top-dark)"/>
+          <rect width="267.3" height="230.742" fill="url(#gold-grad)" opacity="0.28"/>
+
+          <!-- App logo (faint star mark, top-left background) -->
+          <g transform="translate(12,10)" opacity="0.35">
+            <path d="M25,0C25,0,22,14,19,17C16,20,0,25,0,25C0,25,16,30,19,33C22,36,25,50,25,50C25,50,28,36,31,33C34,30,50,25,50,25C50,25,34,20,31,17C28,14,25,0,25,0Z" fill="white" transform="scale(0.55)"/>
+          </g>
+
+          <!-- RIGHT PANEL: photo (x=80.19, y=0, w=187.11, h=173) -->
+          <rect x="80.19" y="0" width="187.11" height="173" fill="#0f0f0f"/>
+          <rect x="80.19" y="0" width="187.11" height="173" fill="#c9920a" opacity="0.08"/>
+          <!-- MS initials -->
+          <text x="173.7" y="87" text-anchor="middle" dominant-baseline="middle"
+                font-family="system-ui,-apple-system,sans-serif"
+                fill="#c9920a" fill-opacity="0.4" font-size="68" font-weight="900">MS</text>
+          <!-- Photo border -->
+          <rect x="80.19" y="0" width="187.11" height="173" fill="none" stroke="#c9920a" stroke-width="2.5"/>
+          <!-- Verification badges -->
+          <rect x="226" y="151" width="17" height="17" rx="3.5" fill="#c9920a22" stroke="#c9920a" stroke-width="0.8"/>
+          <text x="234.5" y="160" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="9" fill="#c9920a">✓</text>
+          <rect x="245" y="151" width="17" height="17" rx="3.5" fill="#c9920a22" stroke="#c9920a" stroke-width="0.8"/>
+          <text x="253.5" y="160" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif" font-size="8" fill="#c9920a">◉</text>
+
+          <!-- LEFT PANEL: rank info (x=0, w=80.19) -->
+          <!-- Big % -->
+          <text x="40" y="113" text-anchor="middle" dominant-baseline="middle"
+                font-family="system-ui,-apple-system,sans-serif"
+                fill="white" font-size="32" font-weight="700">80%</text>
+          <!-- Separator triple lines -->
+          <rect x="8" y="133" width="64" height="0.8" fill="rgba(0,0,0,0.7)"/>
+          <rect x="8" y="134" width="64" height="0.8" fill="#c9920abb"/>
+          <rect x="8" y="135" width="64" height="0.8" fill="rgba(255,255,255,0.25)"/>
+          <!-- Division -->
+          <text x="40" y="153" text-anchor="middle" dominant-baseline="middle"
+                font-family="system-ui,-apple-system,sans-serif"
+                fill="white" font-size="16" font-weight="700">II</text>
+          <!-- Separator triple lines -->
+          <rect x="8" y="165" width="64" height="0.8" fill="rgba(0,0,0,0.7)"/>
+          <rect x="8" y="166" width="64" height="0.8" fill="#c9920abb"/>
+          <rect x="8" y="167" width="64" height="0.8" fill="rgba(255,255,255,0.25)"/>
+          <!-- Uruguay flag -->
+          <g transform="translate(21,176)">
+            <rect width="38" height="25" fill="white"/>
+            <rect y="0"    width="38" height="2.77" fill="white"/>
+            <rect y="2.77" width="38" height="2.77" fill="#0038a8"/>
+            <rect y="5.54" width="38" height="2.77" fill="white"/>
+            <rect y="8.31" width="38" height="2.77" fill="#0038a8"/>
+            <rect y="11.08" width="38" height="2.77" fill="white"/>
+            <rect y="13.85" width="38" height="2.77" fill="#0038a8"/>
+            <rect y="16.62" width="38" height="2.77" fill="white"/>
+            <rect y="19.39" width="38" height="2.77" fill="#0038a8"/>
+            <rect y="22.16" width="38" height="2.84" fill="white"/>
+            <rect width="16" height="16" fill="white"/>
+            <circle cx="8" cy="8" r="3.2" fill="#f4c500"/>
+            <g stroke="#f4c500" stroke-width="0.7">
+              <line x1="8" y1="1.5" x2="8" y2="0.2"/>
+              <line x1="8" y1="14.5" x2="8" y2="15.8"/>
+              <line x1="1.5" y1="8" x2="0.2" y2="8"/>
+              <line x1="14.5" y1="8" x2="15.8" y2="8"/>
+              <line x1="3.3" y1="3.3" x2="2.3" y2="2.3"/>
+              <line x1="12.7" y1="3.3" x2="13.7" y2="2.3"/>
+              <line x1="3.3" y1="12.7" x2="2.3" y2="13.7"/>
+              <line x1="12.7" y1="12.7" x2="13.7" y2="13.7"/>
+            </g>
+          </g>
+
+          <!-- BOTTOM SECTION (230.742–427.3) -->
+          <rect y="230.742" width="267.3" height="196.558" fill="url(#bot-dark)"/>
+          <rect y="230.742" width="267.3" height="196.558" fill="url(#gold-grad)" opacity="0.12"/>
+          <!-- Gold separator -->
+          <rect y="230.742" width="267.3" height="2" fill="#c9920a88"/>
+
+          <!-- Player name -->
+          <text x="133.65" y="256" text-anchor="middle" dominant-baseline="middle"
+                font-family="system-ui,-apple-system,sans-serif"
+                fill="white" font-size="23" font-weight="800" letter-spacing="1.5">MATEO S.</text>
+
+          <!-- Stats divider top -->
+          <rect x="8" y="269" width="251.3" height="0.5" fill="#c9920a70"/>
+
+          <!-- ROW 1: PJ | V | D -->
+          <text x="44.55" y="280" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="rgba(255,255,255,0.6)" font-size="7.5" font-weight="800" letter-spacing="0.8">PJ</text>
+          <text x="44.55" y="299" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="white" font-size="16" font-weight="900">48</text>
+          <text x="133.65" y="280" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="rgba(255,255,255,0.6)" font-size="7.5" font-weight="800" letter-spacing="0.8">V</text>
+          <text x="133.65" y="299" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="white" font-size="16" font-weight="900">35</text>
+          <text x="222.75" y="280" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="rgba(255,255,255,0.6)" font-size="7.5" font-weight="800" letter-spacing="0.8">D</text>
+          <text x="222.75" y="299" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="white" font-size="16" font-weight="900">10</text>
+          <!-- Verticals row 1 -->
+          <rect x="89.1" y="270" width="0.5" height="42" fill="#c9920a44"/>
+          <rect x="178.2" y="270" width="0.5" height="42" fill="#c9920a44"/>
+          <!-- Horizontal between rows -->
+          <rect x="8" y="312" width="251.3" height="0.5" fill="#c9920a44"/>
+
+          <!-- ROW 2: W% | E | MVP -->
+          <text x="44.55" y="324" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="rgba(255,255,255,0.6)" font-size="7.5" font-weight="800" letter-spacing="0.8">W%</text>
+          <text x="44.55" y="343" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="white" font-size="16" font-weight="900">73</text>
+          <text x="133.65" y="324" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="rgba(255,255,255,0.6)" font-size="7.5" font-weight="800" letter-spacing="0.8">E</text>
+          <text x="133.65" y="343" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="white" font-size="16" font-weight="900">3</text>
+          <text x="222.75" y="324" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="rgba(255,255,255,0.6)" font-size="7.5" font-weight="800" letter-spacing="0.8">MVP</text>
+          <text x="222.75" y="343" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" fill="white" font-size="16" font-weight="900">12</text>
+          <!-- Verticals row 2 -->
+          <rect x="89.1" y="313" width="0.5" height="42" fill="#c9920a44"/>
+          <rect x="178.2" y="313" width="0.5" height="42" fill="#c9920a44"/>
+          <!-- Stats divider bottom -->
+          <rect x="8" y="355" width="251.3" height="0.5" fill="#c9920a70"/>
+
+          <!-- Boot icon -->
+          <text x="133.65" y="393" text-anchor="middle" dominant-baseline="middle" font-size="26" fill="rgba(255,255,255,0.65)">⚽</text>
+        </g>
+
+        <!-- Card border: shadow + color + highlight -->
+        <path d="M265.3 53.9a33.3 33.3 0 0 1-17.8-5.5 32 32 0 0 1-13.7-22.9c-0.2-1.1-0.4-2.3-0.4-3.4 0-1.3-1-1.5-1.8-1.9a163 163 0 0 0-31-11.6A257.3 257.3 0 0 0 133.7 0a254.9 254.9 0 0 0-67.1 8.7 170 170 0 0 0-31 11.6c-0.8 0.4-1.8 0.6-1.8 1.9 0 1.1-0.2 2.3-0.4 3.4a32.4 32.4 0 0 1-13.7 22.9A33.8 33.8 0 0 1 2 53.9c-1.5 0.1-2.1 0.4-2 2v293.9c0 3.3 0 6.6 0.4 9.9a22 22 0 0 0 7.9 14.4c3.8 3.2 8.3 5.3 13 6.8 12.4 3.9 24.8 7.5 37.2 11.5a388.7 388.7 0 0 1 50 19.4 88.7 88.7 0 0 1 25 15.5c7.2-7 16.1-11.3 25-15.5a427 427 0 0 1 50-19.4l37.2-11.5c4.7-1.5 9.1-3.5 13-6.8 4.5-3.8 7.2-8.5 7.9-14.4 0.4-3.3 0.4-3.3 0.4-9.9V231.6V60.5v-4.6c0.4-1.6-0.3-1.9-1.7-2z"
+              fill="none" stroke="rgba(0,0,0,0.8)" stroke-width="10"/>
+        <path d="M265.3 53.9a33.3 33.3 0 0 1-17.8-5.5 32 32 0 0 1-13.7-22.9c-0.2-1.1-0.4-2.3-0.4-3.4 0-1.3-1-1.5-1.8-1.9a163 163 0 0 0-31-11.6A257.3 257.3 0 0 0 133.7 0a254.9 254.9 0 0 0-67.1 8.7 170 170 0 0 0-31 11.6c-0.8 0.4-1.8 0.6-1.8 1.9 0 1.1-0.2 2.3-0.4 3.4a32.4 32.4 0 0 1-13.7 22.9A33.8 33.8 0 0 1 2 53.9c-1.5 0.1-2.1 0.4-2 2v293.9c0 3.3 0 6.6 0.4 9.9a22 22 0 0 0 7.9 14.4c3.8 3.2 8.3 5.3 13 6.8 12.4 3.9 24.8 7.5 37.2 11.5a388.7 388.7 0 0 1 50 19.4 88.7 88.7 0 0 1 25 15.5c7.2-7 16.1-11.3 25-15.5a427 427 0 0 1 50-19.4l37.2-11.5c4.7-1.5 9.1-3.5 13-6.8 4.5-3.8 7.2-8.5 7.9-14.4 0.4-3.3 0.4-3.3 0.4-9.9V231.6V60.5v-4.6c0.4-1.6-0.3-1.9-1.7-2z"
+              fill="none" stroke="#c9920a" stroke-width="5" opacity="0.95"/>
+        <path d="M265.3 53.9a33.3 33.3 0 0 1-17.8-5.5 32 32 0 0 1-13.7-22.9c-0.2-1.1-0.4-2.3-0.4-3.4 0-1.3-1-1.5-1.8-1.9a163 163 0 0 0-31-11.6A257.3 257.3 0 0 0 133.7 0a254.9 254.9 0 0 0-67.1 8.7 170 170 0 0 0-31 11.6c-0.8 0.4-1.8 0.6-1.8 1.9 0 1.1-0.2 2.3-0.4 3.4a32.4 32.4 0 0 1-13.7 22.9A33.8 33.8 0 0 1 2 53.9c-1.5 0.1-2.1 0.4-2 2v293.9c0 3.3 0 6.6 0.4 9.9a22 22 0 0 0 7.9 14.4c3.8 3.2 8.3 5.3 13 6.8 12.4 3.9 24.8 7.5 37.2 11.5a388.7 388.7 0 0 1 50 19.4 88.7 88.7 0 0 1 25 15.5c7.2-7 16.1-11.3 25-15.5a427 427 0 0 1 50-19.4l37.2-11.5c4.7-1.5 9.1-3.5 13-6.8 4.5-3.8 7.2-8.5 7.9-14.4 0.4-3.3 0.4-3.3 0.4-9.9V231.6V60.5v-4.6c0.4-1.6-0.3-1.9-1.7-2z"
+              fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      </svg>
+      <div class="tier-badge">🥇 Oro II &nbsp;·&nbsp; 1340 MMR</div>
     </div>
-    <div class="mockup-match">
-      <div class="mockup-match-info">
-        <div class="mockup-match-title">Plata II – Oro II</div>
-        <div class="mockup-match-sub">Hoy 18:00 · 4 lugares</div>
+
+    <!-- RIGHT PANEL -->
+    <div class="showcase-panel">
+
+      <!-- LEADERBOARD -->
+      <div class="lb-card">
+        <div class="lb-header">
+          <h3>💎 Tabla de posiciones</h3>
+        </div>
+        <div class="lb-podium">
+          <div class="podium-slot second">
+            <div class="podium-medal">2do</div>
+            <div class="podium-avatar" style="background:rgba(139,92,246,0.15);border:2px solid #8b5cf6;color:#8b5cf6;">CG</div>
+            <div class="podium-name">C. Gómez</div>
+            <div class="podium-tier" style="color:#8b5cf6">Diamante #2</div>
+          </div>
+          <div class="podium-slot first">
+            <div class="podium-medal">1ro ✦</div>
+            <div class="podium-avatar" style="width:64px;height:64px;font-size:20px;background:rgba(139,92,246,0.2);border:2.5px solid #8b5cf6;color:#8b5cf6;">RP</div>
+            <div class="podium-name">R. Pereira</div>
+            <div class="podium-tier" style="color:#8b5cf6">Diamante #1</div>
+          </div>
+          <div class="podium-slot third">
+            <div class="podium-medal">3ro</div>
+            <div class="podium-avatar" style="background:rgba(139,92,246,0.12);border:2px solid #8b5cf6;color:#8b5cf6;">FR</div>
+            <div class="podium-name">F. Rodríguez</div>
+            <div class="podium-tier" style="color:#8b5cf6">Diamante #3</div>
+          </div>
+        </div>
+        <div class="lb-list">
+          <div class="lb-row">
+            <div class="lb-pos">4</div>
+            <div class="lb-avatar" style="background:rgba(16,185,129,0.15);border:1.5px solid #10b981;color:#10b981;font-size:10px;">MS</div>
+            <div class="lb-info">
+              <div class="lb-name">M. Sierra</div>
+              <div class="lb-tier" style="color:#10b981">Esmeralda I</div>
+            </div>
+            <div class="lb-mmr">1590</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-pos">5</div>
+            <div class="lb-avatar" style="background:rgba(16,185,129,0.1);border:1.5px solid #10b981;color:#10b981;font-size:10px;">JS</div>
+            <div class="lb-info">
+              <div class="lb-name">J. Santos</div>
+              <div class="lb-tier" style="color:#10b981">Esmeralda III</div>
+            </div>
+            <div class="lb-mmr">1460</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-pos">6</div>
+            <div class="lb-avatar" style="background:rgba(201,146,10,0.12);border:1.5px solid #c9920a;color:#c9920a;font-size:10px;">AP</div>
+            <div class="lb-info">
+              <div class="lb-name">A. Pérez</div>
+              <div class="lb-tier" style="color:#c9920a">Oro I</div>
+            </div>
+            <div class="lb-mmr">1380</div>
+          </div>
+        </div>
       </div>
-      <div class="mockup-match-btn">Unirse</div>
+
+      <!-- MATCHES -->
+      <div class="match-card">
+        <div class="match-header">
+          <h3>⚽ Partidos disponibles</h3>
+        </div>
+        <div class="match-list">
+          <div class="match-row">
+            <div class="match-info">
+              <div class="match-range" style="color:#c9920a">Plata II → Oro II</div>
+              <div class="match-meta">Hoy · 18:00 · Pocitos</div>
+              <div class="match-spots">4 lugares disponibles</div>
+            </div>
+            <a class="match-btn" href="#">Unirse</a>
+          </div>
+          <div class="match-row">
+            <div class="match-info">
+              <div class="match-range" style="color:#10b981">Oro I → Esmeralda IV</div>
+              <div class="match-meta">Hoy · 20:00 · Parque Batlle</div>
+              <div class="match-spots">2 lugares disponibles</div>
+            </div>
+            <a class="match-btn" href="#">Unirse</a>
+          </div>
+          <div class="match-row">
+            <div class="match-info">
+              <div class="match-range" style="color:#6b7fa3">Hierro IV → Plata I</div>
+              <div class="match-meta">Mañana · 10:00 · Malvín</div>
+              <div class="match-spots" style="color:#6a7a60">Partido lleno</div>
+            </div>
+            <span class="match-btn full">Lleno</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
 
-<!-- FEATURES -->
 <section class="features">
   <h2>Todo lo que necesitás para <span>competir</span></h2>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">🏆</div>
-      <h3>21 rangos reales</h3>
-      <p>Desde Hierro IV hasta Diamante. Tu MMR sube o baja según cada partido.</p>
+      <h3>13 rangos reales</h3>
+      <p>Desde Hierro hasta Diamante. Tu MMR sube o baja según cada partido disputado.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📍</div>
       <h3>Partidos cerca tuyo</h3>
-      <p>Encontrá partidos de tu nivel en tu zona. Sin WhatsApp groups, sin caos.</p>
+      <p>Encontrá partidos de tu nivel en tu zona. Sin grupos de WhatsApp, sin caos.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🗳️</div>
       <h3>Resultados por votación</h3>
-      <p>Después de cada partido, los jugadores votan el resultado. Sistema anti-trampa integrado.</p>
+      <p>Los jugadores votan el resultado desde su perspectiva. Sistema anti-trampa integrado.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔒</div>
@@ -425,8 +407,8 @@
     </div>
     <div class="feature-card">
       <div class="feature-icon">📊</div>
-      <h3>Estadísticas completas</h3>
-      <p>Seguí tu evolución con gráficas de MMR, historial de partidos y comparativa de rangos.</p>
+      <h3>Carta FIFA personalizada</h3>
+      <p>Tu carta evoluciona con vos. Mostrá tus stats, tu rango y tu país en tiempo real.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
@@ -436,25 +418,19 @@
   </div>
 </section>
 
-<!-- RANKS -->
 <section class="ranks">
-  <h2>Escalá los <span>21 rangos</span></h2>
+  <h2>Escalá los <span>rangos</span></h2>
   <p>¿En qué nivel estás realmente?</p>
   <div class="ranks-row">
-    <span class="rank-pill" style="background:rgba(100,80,60,0.15);color:#c8a87a;border-color:rgba(200,168,122,0.2)">Hierro</span>
-    <span class="rank-pill" style="background:rgba(120,110,100,0.15);color:#c0b4a8;border-color:rgba(192,180,168,0.2)">Bronce</span>
-    <span class="rank-pill" style="background:rgba(140,130,120,0.15);color:#d0c8c0;border-color:rgba(208,200,192,0.2)">Plata</span>
-    <span class="rank-pill" style="background:rgba(180,140,30,0.15);color:#e8c840;border-color:rgba(232,200,64,0.2)">Oro</span>
-    <span class="rank-pill" style="background:rgba(50,180,200,0.15);color:#48d8f0;border-color:rgba(72,216,240,0.2)">Platino</span>
-    <span class="rank-pill" style="background:rgba(80,200,120,0.15);color:#defea4;border-color:rgba(222,254,164,0.3)">Esmeralda</span>
-    <span class="rank-pill" style="background:rgba(60,120,240,0.15);color:#78a8ff;border-color:rgba(120,168,255,0.2)">Zafiro</span>
-    <span class="rank-pill" style="background:rgba(140,60,240,0.15);color:#c878ff;border-color:rgba(200,120,255,0.2)">Amatista</span>
-    <span class="rank-pill" style="background:rgba(240,60,60,0.15);color:#ff7878;border-color:rgba(255,120,120,0.2)">Rubí</span>
-    <span class="rank-pill" style="background:rgba(222,254,164,0.15);color:#defea4;border-color:rgba(222,254,164,0.4)">✦ Diamante</span>
+    <span class="rank-pill" style="background:rgba(75,85,99,0.15);color:#9ca3af;border-color:rgba(75,85,99,0.3)">Hierro</span>
+    <span class="rank-pill" style="background:rgba(194,112,58,0.15);color:#c2703a;border-color:rgba(194,112,58,0.3)">Bronce</span>
+    <span class="rank-pill" style="background:rgba(107,127,163,0.15);color:#6b7fa3;border-color:rgba(107,127,163,0.3)">Plata</span>
+    <span class="rank-pill" style="background:rgba(201,146,10,0.15);color:#c9920a;border-color:rgba(201,146,10,0.3)">Oro</span>
+    <span class="rank-pill" style="background:rgba(16,185,129,0.15);color:#10b981;border-color:rgba(16,185,129,0.3)">Esmeralda</span>
+    <span class="rank-pill" style="background:rgba(139,92,246,0.15);color:#8b5cf6;border-color:rgba(139,92,246,0.35)">✦ Diamante</span>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="brand">FUTS</span>
   <p>© 2026 FUTS. Uruguay.</p>
