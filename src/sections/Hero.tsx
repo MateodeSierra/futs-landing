@@ -38,7 +38,7 @@ export default function Hero() {
           >
             <Badge>⚽ Disponible en Uruguay</Badge>
             <h1 className="mt-7 text-5xl font-black leading-[1.02] tracking-tight text-app-text sm:text-7xl">
-              Fútbol 5 con <span className="text-app-accent">rango real</span>
+              Fútbol 5 <span className="text-app-accent">Rankeado</span>
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-app-secondary">
               Verificación de identidad real, MMR tipo ELO y equipos balanceados por nivel.
