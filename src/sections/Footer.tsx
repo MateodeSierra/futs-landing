@@ -21,6 +21,12 @@ export default function Footer() {
           >
             Términos de uso
           </Link>
+          <Link
+            to="/delete-account"
+            className="rounded text-[13px] text-app-muted transition-colors hover:text-app-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-app-accent"
+          >
+            Eliminar cuenta
+          </Link>
           <a
             href="mailto:support@futs.app"
             className="rounded text-[13px] text-app-muted transition-colors hover:text-app-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-app-accent"
