@@ -56,7 +56,8 @@ export default function Hero() {
                 Fútbol 5 <span className="text-app-accent">Rankeado</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="mt-6 max-w-md text-base leading-relaxed text-app-secondary">
-                Verificación de identidad real, MMR tipo ELO y equipos balanceados por nivel.
+                Jugá fútbol como nunca antes lo jugaste: competí por tu posición en el ranking, ganá premios y
+                demostrá tu nivel.
               </motion.p>
               <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center gap-4">
                 <div className="flex flex-col gap-3 sm:flex-row">
