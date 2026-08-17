@@ -14,5 +14,4 @@ export const STATS: StatItem[] = [
   { value: 21, suffix: '', label: 'rangos distintos' },
   { value: 6, suffix: '', label: 'tiers, de Bronce a Maestro' },
   { value: 5, suffix: '', label: 'partidos de calibración inicial' },
-  { value: 80, suffix: '%', label: 'de consenso para cerrar un resultado' },
 ];

@@ -1,8 +1,5 @@
 import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from 'framer-motion';
-
-const STAR_PATH =
-  'M300.7,359.05c-21.9-52.69-60.82-92.55-114.95-115.41,53.36-21.94,92.53-62.36,115.1-114.9,' +
-  '22.33,53.68,61.6,92.06,114.42,114.99-53.48,23.28-92.53,62.13-114.58,115.32Z';
+import { STAR_PATH, STAR_VIEWBOX } from '../lib/starPath';
 
 interface StarConfig {
   top: string;
@@ -18,7 +15,7 @@ interface StarConfig {
 
 // Ported from futs-app/assets/star.svg — same diamond/sparkle mark as the crest logo.
 const STARS: StarConfig[] = [
-  { top: '15%', left: '8%', size: 180, color: '#a4d618', opacity: 0.45, speedFactor: -1.2 },
+  { top: '6%', left: '6%', size: 180, color: '#a4d618', opacity: 0.45, speedFactor: -1.2 },
   { top: '60%', left: '84%', size: 130, color: '#defea4', opacity: 0.35, speedFactor: 2.2 },
   { top: '35%', left: '90%', size: 90, color: '#c9920a', opacity: 0.4, speedFactor: 1.8 },
   { top: '78%', left: '20%', size: 100, color: '#defea4', opacity: 0.3, speedFactor: -0.9 },
@@ -36,7 +33,7 @@ function Star({ config, scrollYProgress }: { config: StarConfig; scrollYProgress
       className="absolute"
       width={config.size}
       height={config.size}
-      viewBox="0 0 614.41 538.57"
+      viewBox={STAR_VIEWBOX}
       initial={{ opacity: 0 }}
       animate={{ opacity: config.opacity }}
       transition={{ duration: 1, delay: 0.3 }}

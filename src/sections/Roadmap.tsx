@@ -12,10 +12,16 @@ export default function Roadmap() {
     <section className="relative overflow-hidden border-t border-app-border/60 py-16">
       <FloatingStar size={100} color="#a4d618" opacity={0.35} className="left-[8%] top-[6%]" drift={150} />
       <Container>
-        <div className="flex items-center gap-2.5">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ type: 'spring', stiffness: 120, damping: 18 }}
+          className="flex items-center gap-2.5"
+        >
           <h2 className="text-base font-bold text-app-text">Novedades</h2>
           <span className="rounded-full bg-app-accent/[0.15] px-2 py-0.5 text-[11px] font-bold text-app-accent">{ROADMAP.length}</span>
-        </div>
+        </motion.div>
         <motion.div
           variants={staggerContainer(0.1)}
           initial="hidden"

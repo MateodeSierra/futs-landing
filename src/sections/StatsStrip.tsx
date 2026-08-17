@@ -15,7 +15,7 @@ export default function StatsStrip() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="grid grid-cols-2 gap-8 sm:grid-cols-4"
+          className="grid grid-cols-3 gap-6 sm:gap-8"
         >
           {STATS.map((stat) => (
             <motion.div key={stat.label} variants={fadeUp} className="text-center">

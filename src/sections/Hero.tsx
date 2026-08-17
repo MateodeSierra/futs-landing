@@ -5,55 +5,86 @@ import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import PitchBackground from '../components/PitchBackground';
 import ScrollStars from '../components/ScrollStars';
+import HeroPlayerCard from '../components/HeroPlayerCard';
+import { AppleIcon, PlayIcon } from '../components/StoreIcons';
+import { staggerContainer, useRevealVariants } from '../lib/motion';
 
-const WAITLIST_HREF =
-  'mailto:support@futs.app?subject=Quiero%20entrar%20a%20FUTS&body=Avisenme%20cuando%20la%20app%20est%C3%A9%20disponible.';
+// Store listings aren't live yet — swap these for the real App Store / Play Store URLs at launch.
+const APP_STORE_HREF = '#';
+const PLAY_STORE_HREF = '#';
 
 /**
- * Full-viewport cinematic hero — text and CTA only, no app-UI mockups.
- * Content fades/scales out as the user scrolls past it (useScroll tied to
- * this section) so the transition into the features feels continuous.
+ * Full-viewport cinematic hero — copy + CTA alongside a showcase card built
+ * from the real app's PlayerCard shape/colors. Content fades/scales out as
+ * the user scrolls past it (useScroll tied to this section) so the
+ * transition into the features feels continuous.
  */
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const fadeUp = useRevealVariants();
 
   const opacity = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 0.94]);
   const y = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 40]);
+  // The card drifts up faster than the text as the page scrolls — a second
+  // parallax depth layer on top of PitchBackground's floodlights/lines.
+  const cardY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -70]);
 
   return (
     <section ref={ref} className="relative flex min-h-screen items-center overflow-hidden">
-      <PitchBackground />
+      <PitchBackground scrollYProgress={scrollYProgress} />
       <ScrollStars containerRef={ref} />
 
-      <motion.div style={{ opacity, scale, y }} className="relative w-full">
+      <motion.div style={{ opacity, scale, y }} className="relative w-full xl:-mt-[32vh]">
         <Container>
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 110, damping: 18 }}
-            className="mx-auto flex max-w-2xl flex-col items-center text-center"
+            variants={staggerContainer(0.14)}
+            initial="hidden"
+            animate="visible"
+            className="flex w-full flex-col items-center gap-12 xl:flex-row xl:items-center xl:justify-between xl:gap-8"
           >
-            <Badge>⚽ Disponible en Uruguay</Badge>
-            <h1 className="mt-7 text-5xl font-black leading-[1.02] tracking-tight text-app-text sm:text-7xl">
-              Fútbol 5 <span className="text-app-accent">Rankeado</span>
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-app-secondary">
-              Verificación de identidad real, MMR tipo ELO y equipos balanceados por nivel.
-            </p>
-            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
-              <Button href={WAITLIST_HREF} variant="primary">
-                Avisame cuando esté lista
-              </Button>
-              <a
-                href="mailto:support@futs.app"
-                className="rounded text-sm text-app-muted underline-offset-4 transition-colors hover:text-app-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-app-accent"
+            <div className="flex max-w-2xl flex-col items-center text-center xl:items-start xl:text-left">
+              <motion.div variants={fadeUp}>
+                <Badge>Disponible en Uruguay</Badge>
+              </motion.div>
+              <motion.h1
+                variants={fadeUp}
+                className="mt-7 text-5xl font-black leading-[1.02] tracking-tight text-app-text sm:text-7xl"
               >
-                o escribinos directamente
-              </a>
+                Fútbol 5 <span className="text-app-accent">Rankeado</span>
+              </motion.h1>
+              <motion.p variants={fadeUp} className="mt-6 max-w-md text-base leading-relaxed text-app-secondary">
+                Verificación de identidad real, MMR tipo ELO y equipos balanceados por nivel.
+              </motion.p>
+              <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center gap-4">
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Button href={APP_STORE_HREF} variant="primary">
+                    <AppleIcon />
+                    Descargar para iOS
+                  </Button>
+                  <Button href={PLAY_STORE_HREF} variant="primary">
+                    <PlayIcon />
+                    Descargar para Android
+                  </Button>
+                </div>
+                <a
+                  href="mailto:support@futs.app"
+                  className="rounded text-sm text-app-muted underline-offset-4 transition-colors hover:text-app-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-app-accent"
+                >
+                  o escribinos directamente
+                </a>
+              </motion.div>
             </div>
+
+            <motion.div
+              variants={fadeUp}
+              style={{ y: cardY }}
+              className="shrink-0"
+            >
+              <HeroPlayerCard />
+            </motion.div>
           </motion.div>
         </Container>
       </motion.div>

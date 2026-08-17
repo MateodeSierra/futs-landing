@@ -28,10 +28,7 @@ export default function FeatureGrid() {
               whileHover={{ y: -4, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
               className="rounded-2xl border border-app-border bg-app-surface p-6 transition-[border-color,box-shadow] duration-200 hover:border-app-accent/40 hover:shadow-[0_8px_30px_-4px_rgba(164,214,24,0.18)]"
             >
-              <div className="text-2xl" aria-hidden="true">
-                {feature.icon}
-              </div>
-              <h3 className="mt-3 text-[15px] font-bold text-app-text">{feature.title}</h3>
+              <h3 className="text-[15px] font-bold text-app-text">{feature.title}</h3>
               <p className="mt-1.5 text-[13px] leading-relaxed text-app-muted">{feature.description}</p>
             </motion.div>
           ))}

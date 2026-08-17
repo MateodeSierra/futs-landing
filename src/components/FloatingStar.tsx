@@ -1,9 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-
-const STAR_PATH =
-  'M300.7,359.05c-21.9-52.69-60.82-92.55-114.95-115.41,53.36-21.94,92.53-62.36,115.1-114.9,' +
-  '22.33,53.68,61.6,92.06,114.42,114.99-53.48,23.28-92.53,62.13-114.58,115.32Z';
+import { STAR_PATH, STAR_VIEWBOX } from '../lib/starPath';
 
 interface FloatingStarProps {
   size: number;
@@ -37,7 +34,7 @@ export default function FloatingStar({ size, color, opacity, className = '', dri
         style={{ y }}
         width={size}
         height={size}
-        viewBox="0 0 614.41 538.57"
+        viewBox={STAR_VIEWBOX}
         initial={false}
         animate={{ opacity: inView ? opacity : 0, scale: inView ? 1 : 0.6 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}

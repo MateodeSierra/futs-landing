@@ -22,3 +22,13 @@ export const RANKS: RankTier[] = [
   { tier: 'DIAMOND', label: 'Diamante', color: '#8b5cf6', divisions: 4 },
   { tier: 'MASTER', label: 'Maestro', color: '#ef4444', divisions: 0 },
 ];
+
+/** Mirrors futs-app TIER_GRADIENT — same diagonal light→dark pair used to fill a rank's PlayerCard face. */
+export const TIER_GRADIENT: Record<BaseTier, [string, string]> = {
+  BRONZE: ['#c2703a', '#8b4513'],
+  SILVER: ['#6b7fa3', '#374766'],
+  GOLD: ['#c9920a', '#8a6106'],
+  EMERALD: ['#10b981', '#065f46'],
+  DIAMOND: ['#8b5cf6', '#5b21b6'],
+  MASTER: ['#ef4444', '#7f1d1d'],
+};
