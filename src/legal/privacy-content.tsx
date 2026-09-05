@@ -5,7 +5,7 @@ export interface LegalSection {
   body: ReactNode;
 }
 
-export const PRIVACY_UPDATED = '25 de junio de 2026';
+export const PRIVACY_UPDATED = '5 de septiembre de 2026';
 
 export const PRIVACY_SECTIONS: LegalSection[] = [
   {
@@ -34,12 +34,25 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
             <strong>Nombre de display</strong> — visible públicamente dentro de la app.
           </li>
         </ul>
-        <h3>Verificación de identidad</h3>
+        <h3>Verificación de identidad (datos de rostro)</h3>
         <ul>
           <li>
-            <strong>Foto de perfil</strong> — se almacena de forma segura en Firebase Storage. Se usa para verificar que sos una
-            persona real mediante reconocimiento facial (AWS Rekognition). La foto es visible para otros jugadores dentro de la
-            plataforma.
+            <strong>Foto de perfil</strong> — al crear tu cuenta te pedimos una foto de tu cara (tomada con la cámara o elegida de
+            tu galería). Esa foto se almacena de forma segura en Firebase Storage (Google) y se usa como tu foto de perfil visible
+            para otros jugadores dentro de la plataforma.
+          </li>
+          <li>
+            <strong>Detección de rostro</strong> — al subir esa foto, la enviamos una única vez a la API DetectFaces de Amazon
+            Rekognition (AWS), que analiza la imagen para confirmar que contiene un rostro humano real (con al menos 90% de
+            confianza) y previene cuentas falsas o fotos que no son de una persona. Este análisis es puntual y sin estado:
+            Rekognition no crea ni guarda una plantilla facial, huella biométrica ni ningún identificador facial de tu cara, y no
+            la compara contra ninguna base de datos de rostros — únicamente detecta si hay un rostro en la imagen que le enviamos.
+            AWS no retiene la imagen ni el resultado del análisis una vez respondida la solicitud.
+          </li>
+          <li>
+            <strong>Retención y eliminación</strong> — la foto se conserva en Firebase Storage mientras tu cuenta esté activa. Si
+            solicitás la eliminación de tu cuenta, la foto se borra de forma permanente de Firebase Storage al finalizar el plazo
+            descripto en la sección 6.
           </li>
         </ul>
         <h3>Actividad dentro de la app</h3>
@@ -94,7 +107,15 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
             <strong>Google Firebase</strong> (autenticación, almacenamiento de fotos, base de datos).
           </li>
           <li>
-            <strong>Amazon Web Services</strong> (reconocimiento facial con AWS Rekognition; envío de SMS de verificación).
+            <strong>Amazon Web Services</strong> (detección de rostro en tu foto de verificación mediante AWS Rekognition —
+            ver sección 2 para más detalle sobre qué hace y qué no hace este análisis).
+          </li>
+          <li>
+            <strong>Twilio</strong> (envío y verificación del código SMS que confirma tu número de teléfono).
+          </li>
+          <li>
+            <strong>MercadoPago</strong> (procesamiento de pagos cuando comprás fichas; no accedemos ni almacenamos los datos de
+            tu tarjeta, que son manejados directamente por MercadoPago).
           </li>
           <li>
             <strong>Railway</strong> (infraestructura del servidor backend).
@@ -125,9 +146,10 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     heading: '6. Retención de datos',
     body: (
       <p>
-        Conservamos tus datos mientras tu cuenta esté activa. Si solicitás la eliminación de tu cuenta, borraremos tus datos
-        personales en un plazo de 30 días, excepto cuando debamos conservarlos por obligaciones legales o para resolver disputas
-        pendientes.
+        Conservamos tus datos mientras tu cuenta esté activa. Si solicitás la eliminación de tu cuenta, tenés 14 días para
+        arrepentirte iniciando sesión de nuevo; pasado ese plazo, borramos de forma permanente tus datos personales —incluida tu
+        foto de perfil/verificación— excepto cuando debamos conservar cierta información por obligaciones legales o para resolver
+        disputas pendientes sobre partidos ya jugados.
       </p>
     ),
   },
